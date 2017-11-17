@@ -22,9 +22,7 @@ public class ProductClientController {
 	 @Value("${client.url}")
 	    private String url;
 	
-	@HystrixCommand(groupKey = "fallback",
-            commandKey = "fallback",
-    fallbackMethod = "hystrixFallBack")
+	@HystrixCommand(groupKey = "fallback",commandKey = "fallback",fallbackMethod = "hystrixFallBack")
     @GetMapping(value = "/hystrix")
     public List<?> hystrix() {
         return restTemplate.getForObject(url, List.class);
