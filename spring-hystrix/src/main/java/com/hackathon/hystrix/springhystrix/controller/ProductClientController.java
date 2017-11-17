@@ -1,4 +1,4 @@
-package com.hackathon.hystrix.springhystrix;
+package com.hackathon.hystrix.springhystrix.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ProductClientController {
         return restTemplate.getForObject(url, List.class);
     }
 
-    public List<?> hystrixFallBack() {
+    public List<?> hystrixFallBack(Throwable hystrixCommand) {
         List<String> str = new ArrayList<String>();
         str.add("Hystrix returned a fallback method");
 		return str;
