@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microecom.product.productservice.cache.CatalogCache;
 import com.microecom.product.productservice.domain.Catalog;
+import com.microecom.product.productservice.repository.CatalogRepository;
 
 @RefreshScope
 @RestController
@@ -22,16 +22,16 @@ public class CatalogController {
 	private String message;
 	
 	@Autowired
-	private CatalogCache catalogCache;
+	CatalogRepository catalogRepository;
 	
 	@GetMapping("/all/{displayName}")
 	public Catalog getCatalog(@PathVariable String displayName ){
-		return catalogCache.getCatalog(displayName);
+		return catalogRepository.findByDisplayName(displayName);
 	}
 	
 	@GetMapping("/all")
 	public List<Catalog> getAllCatalogs(){
-		return catalogCache.getAllCatalog();
+		return catalogRepository.findAll();
 	}
 	
 	@GetMapping(value ="/message")

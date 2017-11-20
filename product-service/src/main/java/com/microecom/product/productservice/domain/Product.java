@@ -1,51 +1,35 @@
 package com.microecom.product.productservice.domain;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 
 @Document
-public  class Product {
+public  class Product implements Serializable {
 
     @Id
     private String id;
 
-    private int version;
+    private String pc9;
+    
+    private String pc5;
 
     @TextIndexed
     private String displayName;
-
-    private Date creationDate;
-
-    private Date startDate;
-
-    private Date endDate;
-
+   
     @TextIndexed
     private String description;
 
-    @TextIndexed
-    private String longDescription;
-
-    private Boolean nonreturnable;
+    private Double price;
 
     private Boolean discountable;
 
-    private String brand;
-
-    private Boolean disallowAsRecommendation;
-
     private Boolean onlineOnly;
-
-    @TextIndexed
-    private List<String> keywords;
-
 
     @DBRef
     private Category defaultParentCategory;
@@ -53,16 +37,8 @@ public  class Product {
     @DBRef(lazy = true)
     private List<Sku> childSkus;
 
-    private List<Image> images;
-
-
-    @DBRef(lazy = true)
-    private Map<String, Media> auxiliaryMedia;
-
-    private List<String> displayableSkuAttributes;
-
-    @DBRef(lazy = true)
-    private List<Category> fixedParentCategories;
+   
+	
 
 	public String getId() {
 		return id;
@@ -72,13 +48,7 @@ public  class Product {
 		this.id = id;
 	}
 
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
+	
 
 	public String getDisplayName() {
 		return displayName;
@@ -88,29 +58,7 @@ public  class Product {
 		this.displayName = displayName;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+	
 
 	public String getDescription() {
 		return description;
@@ -120,21 +68,7 @@ public  class Product {
 		this.description = description;
 	}
 
-	public String getLongDescription() {
-		return longDescription;
-	}
-
-	public void setLongDescription(String longDescription) {
-		this.longDescription = longDescription;
-	}
-
-	public Boolean getNonreturnable() {
-		return nonreturnable;
-	}
-
-	public void setNonreturnable(Boolean nonreturnable) {
-		this.nonreturnable = nonreturnable;
-	}
+	
 
 	public Boolean getDiscountable() {
 		return discountable;
@@ -144,21 +78,7 @@ public  class Product {
 		this.discountable = discountable;
 	}
 
-	public String getBrand() {
-		return brand;
-	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public Boolean getDisallowAsRecommendation() {
-		return disallowAsRecommendation;
-	}
-
-	public void setDisallowAsRecommendation(Boolean disallowAsRecommendation) {
-		this.disallowAsRecommendation = disallowAsRecommendation;
-	}
 
 	public Boolean getOnlineOnly() {
 		return onlineOnly;
@@ -168,13 +88,6 @@ public  class Product {
 		this.onlineOnly = onlineOnly;
 	}
 
-	public List<String> getKeywords() {
-		return keywords;
-	}
-
-	public void setKeywords(List<String> keywords) {
-		this.keywords = keywords;
-	}
 
 	public Category getDefaultParentCategory() {
 		return defaultParentCategory;
@@ -192,36 +105,30 @@ public  class Product {
 		this.childSkus = childSkus;
 	}
 
-	public List<Image> getImages() {
-		return images;
+	public String getPc9() {
+		return pc9;
 	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setPc9(String pc9) {
+		this.pc9 = pc9;
 	}
 
-	public Map<String, Media> getAuxiliaryMedia() {
-		return auxiliaryMedia;
+	public String getPc5() {
+		return pc5;
 	}
 
-	public void setAuxiliaryMedia(Map<String, Media> auxiliaryMedia) {
-		this.auxiliaryMedia = auxiliaryMedia;
+	public void setPc5(String pc5) {
+		this.pc5 = pc5;
 	}
 
-	public List<String> getDisplayableSkuAttributes() {
-		return displayableSkuAttributes;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setDisplayableSkuAttributes(List<String> displayableSkuAttributes) {
-		this.displayableSkuAttributes = displayableSkuAttributes;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
-	public List<Category> getFixedParentCategories() {
-		return fixedParentCategories;
-	}
-
-	public void setFixedParentCategories(List<Category> fixedParentCategories) {
-		this.fixedParentCategories = fixedParentCategories;
-	}
+	
     
 }

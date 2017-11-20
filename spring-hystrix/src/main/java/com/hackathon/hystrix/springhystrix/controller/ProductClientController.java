@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +36,7 @@ public class ProductClientController {
 
     public List<?> hystrixFallBack(Throwable hystrixCommand) {
         List<String> str = new ArrayList<String>();
-        str.add("Hystrix returned a fallback method");
+        str.add("The service is down and the call is handled gracefully from : " + this.getClass().toString());
 		return str;
         
     }

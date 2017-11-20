@@ -22,7 +22,6 @@ public class ProductCache {
 	
 	@Cacheable(value = "allCache")
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
 		return productRepository.findAll();
 	}
 

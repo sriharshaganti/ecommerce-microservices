@@ -15,6 +15,14 @@ public class Catalog implements Serializable{
     private String displayName;
 
     private List<Category> rootCategories;
+    
+    
+
+	public Catalog() {
+		super();
+	}
+
+	
 
 	public String getId() {
 		return id;
