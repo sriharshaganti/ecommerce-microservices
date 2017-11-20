@@ -11,7 +11,7 @@ import com.microecom.product.productservice.domain.Category;
 import com.microecom.product.productservice.repository.CategoryRepository;
 
 @RestController
-@RequestMapping("/rest/categorys")
+@RequestMapping("/rest/categories")
 public class CategoryController {
 	
 	@Autowired
