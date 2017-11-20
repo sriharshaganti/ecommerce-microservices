@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/rest/products")
-@Api(value="Levi's API", description="Operations pertaining to Product Catalog of Levis")
+@Api(value="Product services", description="Operations pertaining to Products")
 public class ProductController {
 
 	@Autowired
