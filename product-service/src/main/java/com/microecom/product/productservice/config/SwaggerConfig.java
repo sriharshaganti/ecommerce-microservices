@@ -15,12 +15,14 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+	private static final String PRODUCT_CONTROLLER = "com.microecom.product.productservice.controller";
+
 	@Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
         		.groupName("Products")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.microecom.product.productservice.controller"))
+                .apis(RequestHandlerSelectors.basePackage(PRODUCT_CONTROLLER))
                 .paths(regex("/rest/products.*"))
                 .build()
                 .apiInfo(metaData());
@@ -31,7 +33,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
         		.groupName("Catalog")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.microecom.product.productservice.controller"))
+                .apis(RequestHandlerSelectors.basePackage(PRODUCT_CONTROLLER))
                 .paths(regex("/rest/catalogs.*"))
                 .build()
                 .apiInfo(metaData());
@@ -42,7 +44,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
         		.groupName("Category")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.microecom.product.productservice.controller"))
+                .apis(RequestHandlerSelectors.basePackage(PRODUCT_CONTROLLER))
                 .paths(regex("/rest/categories.*"))
                 .build()
                 .apiInfo(metaData());
@@ -53,7 +55,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
         		.groupName("SKU")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.microecom.product.productservice.controller"))
+                .apis(RequestHandlerSelectors.basePackage(PRODUCT_CONTROLLER))
                 .paths(regex("/rest/sku.*"))
                 .build()
                 .apiInfo(metaData());
@@ -61,8 +63,9 @@ public class SwaggerConfig {
     
     private ApiInfo metaData() {
     	
-    	ApiInfo apiInfo = new ApiInfo("ECommerce Micro-services", 
-    			"Micro-services for ecommerce business", "1.0", "Terms of service", new Contact("Sriharsha Ganti", "https://github.com/sriharshaganti", "sganti@levi.com"), "Apache License Version 2.0", "https://www.apache.org/licenses/LICENSE-2.0");
+    	Contact contact = new Contact("Sriharsha Ganti", "https://github.com/sriharshaganti", "sganti@levi.com");
+		ApiInfo apiInfo = new ApiInfo("ECommerce Micro-services", 
+    			"Micro-services for ecommerce business", "1.0", "Terms of service", contact, "Apache License Version 2.0", "https://www.apache.org/licenses/LICENSE-2.0");
         return apiInfo;
     }
 }

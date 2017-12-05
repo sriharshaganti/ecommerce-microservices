@@ -24,4 +24,6 @@ public class EhCacheConfiguration {
         bean.setShared(true);
         return bean;
     }
+    
+    
 }

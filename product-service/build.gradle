@@ -9,10 +9,15 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
-
+plugins {
+  id "org.sonarqube" version "2.6"
+}
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'org.sonarqube'
+
+
 
 group = 'com.microecom.product'
 version = '0.0.1-SNAPSHOT'
@@ -37,6 +42,12 @@ dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '1.5.8.RELEASE'
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.2'
+	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.2'
+	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.2'
+	//compile group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.13'
+	
+	
 	//compile group: 'io.swagger', name: 'swagger-annotations', version: '1.5.16'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
@@ -45,4 +56,10 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "sample-project"
+    }
 }
